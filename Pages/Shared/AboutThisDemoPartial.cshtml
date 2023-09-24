@@ -1,4 +1,6 @@
 <div>
+    <h4>Finance use cases</h4>
+
     Welcome to the Woodgrove Bank demo! This
     dialog displays use cases, business context throughout each sign-in. To start, select a use case, read
     the guidance and start the use case:
@@ -9,6 +11,10 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_Finance')">Finance use case</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_SAML')">Sign-in with SAML protocol</a>
             </li>
             <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_ForceAuth')">SAML force
@@ -16,7 +22,29 @@
             <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_NameIDPolicy')">SAML NameIDPolicy</a>
             </li>
         </ul>
+
         <div id="useCases">
+
+            <div id="useCase_Finance" class="useCase">
+                <h4>Finance use case</h4>
+
+                <p>
+                     The <b>Woodgrove Bank</b> demo  application illustrates the sign-up and sign-in authentication experiences for financial scenarios.
+                      Woodgrove has prioritized innovation, introducing customer-empowering advances like branchless banking and mobile banking applications. 
+                </p>
+
+            <h4>More applications</h4>
+
+                <ul>
+                    <li style="list-style-type: none;"><i class="bi bi-shop-window" style="font-size: larger;"></i> &nbsp; <a
+                            href="https://woodgrovedemo.com/">Woodgrove Groceries</a> </li>
+                    <li style="list-style-type: none;"><i class="bi bi-cup-hot" style="font-size: larger;"></i> &nbsp;
+                        <a href="https://woodgroverestaurants.com/">Woodgrove restaurants (private access)</a> </li>
+                </ul>
+                <a href="/Auth/Login" class="btn header-button" role="button"><i class="bi bi-play-circle"></i> Start
+                    the use case</a>
+            </div>
+
             <div id="useCase_SAML" class="useCase">
                 <h4>Sign-in with SAML protocol</h4>
                 <p>
