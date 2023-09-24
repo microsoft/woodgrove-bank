@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-woodgrove_bank-a414df85-d25f-49e8-a813-1c6de47736c4</UserSecretsId>
+    <RootNamespace>woodgrove_bank</RootNamespace>
+    <AssemblyVersion>1.0.0.04</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ITfoxtec.Identity.Saml2.MvcCore" Version="4.8.7-beta2" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>

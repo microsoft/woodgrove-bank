@@ -1,0 +1,21 @@
+﻿@using System.Security.Principal
+
+<ul class="navbar-nav">
+@if (User.Identity?.IsAuthenticated == true)
+{
+        <li class="nav-item" style="margin-right: 25px; margin-top: 4px;">
+            <a class="nav-link text-dark" href="/token" style="white-space: nowrap;">Hello @User.Claims.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/displayname").Select(c => c.Value).SingleOrDefault()</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-controller="Auth" asp-action="Logout">
+                <button type="submit" class="btn btn-link  header-button">Sign out</button>
+            </form>
+        </li>
+}
+else
+{
+        <li class="nav-item">
+            <a class="nav-link  header-button" asp-controller="Auth" asp-action="Login">Sign in</a>
+        </li>
+}
+</ul>

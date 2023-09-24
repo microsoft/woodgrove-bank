@@ -1,0 +1,69 @@
+<div>
+    Welcome to the Woodgrove Bank demo! This
+    dialog displays use cases, business context throughout each sign-in. To start, select a use case, read
+    the guidance and start the use case:
+    <div class="dropdown" style="margin-top: 15px">
+        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+            aria-expanded="false" style="width: 100%; text-align: left; border-color: gray;">
+            Select a use case
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_SAML')">Sign-in with SAML protocol</a>
+            </li>
+            <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_ForceAuth')">SAML force
+                    authentication</a></li>
+            <li><a class="dropdown-item" href="#" onclick="showUseCase('useCase_NameIDPolicy')">SAML NameIDPolicy</a>
+            </li>
+        </ul>
+        <div id="useCases">
+            <div id="useCase_SAML" class="useCase">
+                <h4>Sign-in with SAML protocol</h4>
+                <p>
+                    Microsoft Entra Exteranl ID for customers offers solutions that let you quickly add
+                    intuitive, user-friendly sign-up and sign-up experiences for your customer apps. The
+                    Woodgrove Bank demo environment illustrates several of the most common
+                    authentication experiences that can be configured for your customer-facing apps.
+                </p>
+                <a href="/Auth/Login" class="btn header-button" role="button"><i class="bi bi-play-circle"></i> Start
+                    the use case</a>
+            </div>
+            <div id="useCase_ForceAuth" class="useCase">
+                <h4>SAML force authetication</h4>
+                <p>
+                    Demostres the SAML request <b>ForceAuthn</b> flow. Using ForceAuthn in the SAML request the user
+                    will be forced
+                    to re-authenticate, even if they have a valid session with Microsoft Entra Exteranl ID.
+                </p>
+                <a class="btn header-button" role="button" href="/Auth/ForceAuthLogin"><i class="bi bi-play-circle"></i>
+                    Start the use
+                    case</a>
+            </div>
+            <div id="useCase_NameIDPolicy" class="useCase">
+                <h4>SAML NameIDPolicy format</h4>
+                <p>
+                    If <b>NameIDPolicy</b> is
+                    provided, you can include its optional <b>Format</b> attribute. The Format attribute can have only one of
+                    the following values. To start the use case , select one of the follwoing links:
+
+                    <ul>
+                        <li><a href="/Auth/NameIDPolicy?id=persistent">urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</a></li>
+                        <li><a href="/Auth/NameIDPolicy?id=emailAddress">urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</a></li>
+                        <li><a href="/Auth/NameIDPolicy?id=unspecified">urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</a> (default)</li>
+                        <li><a href="/Auth/NameIDPolicy?id=transient">urn:oasis:names:tc:SAML:2.0:nameid-format:transient</a></li>
+                    </ul>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showUseCase(useCaseId) {
+        $(".useCase").hide();
+        $("#" + useCaseId).show();
+    }
+
+</script>

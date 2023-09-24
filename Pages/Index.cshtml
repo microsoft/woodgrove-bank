@@ -1,0 +1,211 @@
+﻿@page
+@model IndexModel
+@{
+  ViewData["Title"] = "Home page";
+  ViewData["ContainerCSS"] = "container-fluid";
+}
+
+
+@section Jumbotron{
+  <!-- Welcome message-->
+  <div class="container">
+
+ 
+  <div class="inner-header" style="padding-top: 20px;">
+    <div class="jumbotron">
+      <h1 style="color: white;">Welcome to Woodgrove Bank demo app</h1>
+      <div class="lead my-4">
+        Microsoft Entra External ID for your customers offers solutions that let you quickly add intuitive,  
+        user-friendly sign-up and sign-up experiences for your customer apps. The <b>Woodgrove Bank</b> demo  
+        application illustrates the sign-up and sign-in authentication experiences for financial scenarios. 
+      </div>
+    </div>
+  </div>
+   </div>
+  <!-- Welcome message end-->
+
+  <!--Waves Container-->
+  <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+      preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+      </g>
+    </svg>
+  </div>
+  <!--Waves end-->
+}
+
+<!-- Numbers -->
+<div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur homepage-numbers">
+  <div class="row">
+    <div class="col-md-4 position-relative">
+      <div class="p-3 text-center">
+        <h1 class="text-primary"><span class="countup">180</span>+</h1>
+        <h5 class="mt-3">Countries</h5>
+        <p class="text-sm">We operate in four continents and 180 countries with the public and private sectors.</p>
+      </div>
+      <hr class="vertical dark">
+    </div>
+    <div class="col-md-4 position-relative">
+      <div class="p-3 text-center">
+        <h1 class="text-primary"> <span class="countup">1428</span>+</h1>
+        <h5 class="mt-3">Branches</h5>
+        <p class="text-sm">The ATMs located inside and outside our banking centers. We even have drive-through ATMs for
+          your convenience.</p>
+      </div>
+      <hr class="vertical dark">
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 text-center">
+        <h1 class="text-primary" id="num3" num="39"><span class="countup">75.5</span>b$</h1>
+        <h5 class="mt-3">Revenue for the twelve months</h5>
+        <p class="text-sm">Woodgrove revenue for the last twelve months 30.66% increase year-over-year.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Numbers end-->
+
+<section class="py-5">
+  <div class="container" style="padding-top: 50px;;">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <i class="bi bi-hand-thumbs-up homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Flexible and easy access</h5>
+            <p class="pe-3">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+          <div class="col-md-6">
+            <div>
+              <i class="bi bi-globe homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Global presence</h5>
+            <p class="pe-3">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6 mt-3">
+            <div>
+              <i class="bi bi-currency-exchange homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Save Time &amp; Money</h5>
+            <p class="pe-5">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div>
+              <i class="bi bi-graph-up-arrow homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Investor Relations</h5>
+            <p class="pe-3">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6 mt-3">
+            <div>
+              <i class="bi bi-display homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Online Banking
+            </h5>
+            <p class="pe-5">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div>
+              <i class="bi bi-people homepage-icon"></i>
+            </div>
+            <h5 class="mt-3">Risk Management</h5>
+            <p class="pe-3">Microsoft Entra External ID for customers, also known as Azure Active Directory (Azure AD)
+              for customers, is a customer identity access management (CIAM) solution that lets you create secure,
+              customized sign-in experiences for your customer-facing apps and services.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-4">
+        <div class="card" style="border-style: none;">
+          <img src="~/images/homepage-image1.png" class="homepage-card-image">
+          <div class="card-body pt-7 text-center">
+            David, the financial manager
+          </div>
+
+          <div style="padding-top: 25px;">&nbsp;</div>
+          <img src="~/images/homepage-image3.png" class="homepage-card-image">
+          <div class="card-body pt-7 text-center">
+            Olivia, loan officer
+          </div>
+
+          <div style="padding-top: 25px;">&nbsp;</div>
+          <img src="~/images/homepage-image2.png" class="homepage-card-image">
+          <div class="card-body pt-7 text-center">
+            Robert, a branch administrator
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  // How long you want the animation to take, in ms
+  const animationDuration = 3000;
+  // Calculate how long each ‘frame’ should last if we want to update the animation 60 times per second
+  const frameDuration = 1000 / 60;
+  // Use that to calculate how many frames we need to complete the animation
+  const totalFrames = Math.round(animationDuration / frameDuration);
+  // An ease-out function that slows the count as it progresses
+  const easeOutQuad = t => t * (2 - t);
+
+  // The animation function, which takes an Element
+  const animateCountUp = el => {
+    let frame = 0;
+    const countTo = parseInt(el.innerHTML, 10);
+    // Start the animation running 60 times per second
+    const counter = setInterval(() => {
+      frame++;
+      // Calculate our progress as a value between 0 and 1
+      // Pass that value to our easing function to get our
+      // progress on a curve
+      const progress = easeOutQuad(frame / totalFrames);
+      // Use the progress value to calculate the current count
+      const currentCount = Math.round(countTo * progress);
+
+      // If the current count has changed, update the element
+      if (parseInt(el.innerHTML, 10) !== currentCount) {
+        el.innerHTML = currentCount;
+      }
+
+      // If we’ve reached our last frame, stop the animation
+      if (frame === totalFrames) {
+        clearInterval(counter);
+      }
+    }, frameDuration);
+  };
+
+  // Run the animation on all elements with a class of ‘countup’
+  const runAnimations = () => {
+    const countupEls = document.querySelectorAll('.countup');
+    countupEls.forEach(animateCountUp);
+  };
+
+  runAnimations();
+</script>

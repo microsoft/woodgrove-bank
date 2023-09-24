@@ -1,0 +1,66 @@
+﻿@page
+@model woodgrove_bank.Pages.TokenModel
+@{
+    ViewData["Title"] = "Claims and token";
+}
+<h1 style="padding-bottom: 15px; padding-top: 15px;">Your claims and access token</h1>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Claim</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var claim in User.Claims)
+            {
+                <tr>
+                    <td scope="row" style="color: #1b1b1b;">@claim.Type</td>
+                    <td class="text-break">@claim.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p>
+    <button class="btn header-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Show the SAML token
+    </button>
+</p>
+<div class="collapse" id="collapseExample">
+
+    @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("SamlResponse")))
+    {
+        <code id="SamlToken">@HttpContext.Session.GetString("SamlResponse").Replace( "\n", "<br />")</code>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            Can't find the SAML token. Try to <a asp-controller="Auth" asp-action="Login" asp-route-returnUrl="/token">sign in</a> again.
+        </div>
+    }
+</div>
+
+@section AboutThisDemo{
+    <div>
+        This demo shows the <b>SAML token</b> user's <b>claims</b>. The SAML tokens are issued by Microsoft Entra and
+        contain claims that carry information about you.
+
+        <br />&nbsp;<br />
+        SAML tokens are intended to be understood by your applications. Information in SAML tokens allows the applications
+        to
+        verify that a user is who they claim to be.
+    </div>
+}
+
+@section Scripts{
+    <script>
+
+    </script>
+}
