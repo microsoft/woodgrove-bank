@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col">
+        <div style="padding-top: 10px;padding-bottom: 5px;" id="stepNavigatorContainer">
+            <a href="#" id="movePrevious"
+                class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                onclick="stepper.previous(); return false;"><i class="bi bi-arrow-left-circle"></i> Previous</a>
+
+            <!-- Example single danger button -->
+            <div class="btn-group" style="margin-left: 20px;">
+                <button type="button" class="btn btn-light dropdown-toggle" id="stepNumber" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    1
+                </button>
+                <ul class="dropdown-menu" id="stepNavigator">
+                </ul>
+            </div>
+
+            <a style="margin-left: 20px;" href="#" id="moveNext"
+                class="link-body-emphasis link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                onclick="stepper.next(); return false;"><i class="bi bi-arrow-right-circle"></i> Next</a>
+        </div>
+    </div>
+</div>

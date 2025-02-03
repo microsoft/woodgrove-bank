@@ -1,0 +1,135 @@
+﻿@page
+@model woodgrovedemo.Help.Pages.AppRegistrationModel
+
+@{
+    ViewData["Title"] = "SAML application";
+    Layout = "_Layout";
+}
+
+<h1 style="margin-top: 25px; margin-bottom: 25px;">Implement SAML authentication with Microsoft Entra external ID</h1>
+<p>
+    Microsoft Entra Conditional Access brings signals together, to make decisions,
+    and enforce security policies. <a
+        href="https://learn.microsoft.com/entra/external-id/customers/how-to-multifactor-authentication-customers"
+        target="_blank" class="link-dark link-offset-2">Multifactor authentication (MFA)</a> protects customers
+    identity by prompting them for a second verification method.
+
+    In this demo a Conditional Access policy that's targeted to all users when the sign-in risk level is
+    medium or high, prompts for MFA.
+</p>
+
+@await Html.PartialAsync("_HelpSelector.cshtml", 1)
+<div class="tab-content wg-tab-content">
+
+    <div class="tab-pane active" id="microsoftEntraAdminCenter" role="tabpanel"
+        aria-labelledby="microsoftEntraAdminCenter-tab" tabindex="0">
+        @await Html.PartialAsync("_StepsButtons.cshtml")
+
+        <div class="bs-stepper vertical" id="Stepper">
+            @await Html.PartialAsync("_Steps.cshtml", 7)
+
+            <div class="bs-stepper-content">
+                <div id="step-1" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger1">
+
+                    <p>
+                        To register a SAML application, sign in to the <a href="https://entra.microsoft.com/"
+                            target="_blank" class="link-dark link-offset-2">Microsoft Entra admin center</a>
+                        and browse to <b>Enterprise applications </b>. Then, select <b>+ New
+                            application</b>.
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-1.png">
+                    </a>
+                </div>
+
+                <div id="step-2" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger2">
+                    <p>
+                        From the <b>Browse Microsoft Entra Gallery</b>, select <b>Create your own application</b>. Enter
+                        a name for your application. Then, select the <b>Integrate any other application you don't find
+                            in the gallery (Non-gallery)</b> option.
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-2.png">
+                    </a>
+                </div>
+
+                <div id="step-3" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger3">
+                    <p>
+                        From the menu, select <b>Properties</b>. Then, disable the <b>Assignment required?</b> option
+                        and <b>Save</b> the changes.
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-3.png">
+                    </a>
+                </div>
+
+                <div id="step-4" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger4">
+                    <p>
+                        From the menu, select <b>Single sign-on</b>. Then, select the <b>SAML</b> single sign-on option.
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-4.png">
+                    </a>
+                </div>
+
+                <div id="step-5" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger5">
+                    <p>
+                        On the <b>Set up Single Sign-On with SAML</b> page, select the <b>Edit</b> button next to the
+                        <b>Basic SAML Configuration</b>.
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-5.png">
+                    </a>
+                </div>
+
+                <div id="step-6" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger6">
+                    <p>
+                        On the <b>Basic SAML Configuration</b>:
+                    <ul>
+                        <li>Enter an <b>Identifier (Entity ID)</b>. This is the unique ID that identifies your
+                            application to Microsoft Entra ID. This value must be unique across all applications in your
+                            Microsoft Entra tenant.</li>
+                        <li>Enter a <b>Reply URL (Assertion Consumer Service URL)</b>. It's where your application
+                            expects to receive the authentication SAML token. This is also referred to as the “Assertion
+                            Consumer Service” (ACS) in SAML.</li>
+                        <li>Save the changes</li>
+                    </ul>
+                    </p>
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-6.png">
+                    </a>
+                </div>
+
+                <div id="step-7" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger7">
+                    <p>
+                        Finally, associate your application with a user flow. To do so, go to <b>External Identities</b>
+                        > <b>User flows</b> and from the list of user flows select the user flow to associate with your
+                        application. Then, in the user flow, select <b>Applications</b> and add your application to the
+                        user flow, by selecting the <b>Add application</b> button and select the application you just
+                                created.
+                    </p>
+
+
+                    <a href="#" class="pop" onclick="return false;">
+                        <img class="img-fluid border" src="~/Help/AppRegistration/saml-app-7.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="microsoftGraph" role="tabpanel" aria-labelledby="microsoftGraph-tab" tabindex="0">
+        Comming soon
+    </div>
+
+
+    <div class="tab-pane" id="graphPowerShell" role="tabpanel" aria-labelledby="graphPowerShell-tab" tabindex="0">
+        
+    </div>
+</div>
