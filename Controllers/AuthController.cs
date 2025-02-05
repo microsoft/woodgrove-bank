@@ -11,6 +11,8 @@ using System.Security.Authentication;
 using woodgrove_bank.Identity;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 
 // The code is based on https://github.com/ITfoxtec/ITfoxtec.Identity.Saml2/blob/master/test/TestWebAppCore/Controllers/AuthController.cs
 namespace woodgrove_bank.Controllers
@@ -21,15 +23,22 @@ namespace woodgrove_bank.Controllers
     {
         const string relayStateReturnUrl = "ReturnUrl";
         private readonly Saml2Configuration config;
+        private TelemetryClient _telemetry;
 
-        public AuthController(Saml2Configuration config)
+        public AuthController(Saml2Configuration config, TelemetryClient telemetry)
         {
             this.config = config;
+            _telemetry = telemetry;
         }
 
         [Route("Login")]
         public IActionResult Login(string returnUrl = null)
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("Login");
+            pageView.Properties.Add("Area", "Demo");
+            _telemetry.TrackPageView(pageView);
+
             var binding = new Saml2RedirectBinding();
             binding.SetRelayStateQuery(new Dictionary<string, string> { { relayStateReturnUrl, returnUrl ?? Url.Content("~/") } });
 
@@ -39,6 +48,11 @@ namespace woodgrove_bank.Controllers
         [Route("ForceAuthLogin")]
         public IActionResult ForceAuthLogin(string returnUrl = null)
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("ForceAuthLogin");
+            pageView.Properties.Add("Area", "Demo");
+            _telemetry.TrackPageView(pageView);
+
             var binding = new Saml2RedirectBinding();
             binding.SetRelayStateQuery(new Dictionary<string, string> { { relayStateReturnUrl, returnUrl ?? Url.Content("~/") } });
 
@@ -51,6 +65,11 @@ namespace woodgrove_bank.Controllers
         [Route("NameIDPolicy")]
         public IActionResult NameIDPolicy(string returnUrl = null, string ID = null)
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("NameIDPolicy");
+            pageView.Properties.Add("Area", "Demo");
+            _telemetry.TrackPageView(pageView);
+
             var binding = new Saml2RedirectBinding();
             binding.SetRelayStateQuery(new Dictionary<string, string> { { relayStateReturnUrl, returnUrl ?? Url.Content("~/") } });
 
@@ -88,6 +107,11 @@ namespace woodgrove_bank.Controllers
         [Route("AssertionConsumerService")]
         public async Task<IActionResult> AssertionConsumerService()
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("AssertionConsumerService");
+            pageView.Properties.Add("Area", "SAML protocol");
+            _telemetry.TrackPageView(pageView);
+
             var binding = new Saml2PostBinding();
             var saml2AuthnResponse = new Saml2AuthnResponse(config);
 
@@ -116,6 +140,11 @@ namespace woodgrove_bank.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("Logout");
+            pageView.Properties.Add("Area", "Demo");
+            _telemetry.TrackPageView(pageView);
+
             if (!User.Identity.IsAuthenticated)
             {
                 return Redirect(Url.Content("~/"));
@@ -129,6 +158,11 @@ namespace woodgrove_bank.Controllers
         [Route("LoggedOut")]
         public IActionResult LoggedOut()
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("LoggedOut");
+            pageView.Properties.Add("Area", "SAML protocol");
+            _telemetry.TrackPageView(pageView);
+
             var binding = new Saml2RedirectBinding(); //Saml2PostBinding();
             binding.Unbind(Request.ToGenericHttpRequest(), new Saml2LogoutResponse(config));
 
@@ -138,6 +172,11 @@ namespace woodgrove_bank.Controllers
         [Route("SingleLogout")]
         public async Task<IActionResult> SingleLogout()
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("SingleLogout");
+            pageView.Properties.Add("Area", "SAML protocol");
+            _telemetry.TrackPageView(pageView);
+
             Saml2StatusCodes status;
             var requestBinding = new Saml2PostBinding();
             var logoutRequest = new Saml2LogoutRequest(config, User);

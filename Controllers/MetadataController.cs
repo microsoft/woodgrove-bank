@@ -2,6 +2,8 @@ using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.MvcCore;
 using ITfoxtec.Identity.Saml2.Schemas;
 using ITfoxtec.Identity.Saml2.Schemas.Metadata;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,14 +17,21 @@ namespace woodgrove_bank.Controllers
     public class MetadataController : Controller
     {
         private readonly Saml2Configuration config;
+        private TelemetryClient _telemetry;
 
-        public MetadataController(Saml2Configuration config)
+        public MetadataController(Saml2Configuration config, TelemetryClient telemetry)
         {
             this.config = config;
+            _telemetry = telemetry;
         }
 
         public IActionResult Index()
         {
+            // Application insights telemetry
+            PageViewTelemetry pageView = new PageViewTelemetry("Metadata");
+            pageView.Properties.Add("Area", "SAML protocol");
+            _telemetry.TrackPageView(pageView);
+
             var defaultSite = new Uri($"{Request.Scheme}://{Request.Host.ToUriComponent()}/");
 
             var entityDescriptor = new EntityDescriptor(config);
@@ -46,14 +55,14 @@ namespace woodgrove_bank.Controllers
                 NameIDFormats = new Uri[] { NameIdentifierFormats.X509SubjectName },
                 AssertionConsumerServices = new AssertionConsumerService[]
                 {
-                    new AssertionConsumerService { Binding = ProtocolBindings.HttpPost, Location = new Uri(defaultSite, "Auth/AssertionConsumerService") },                    
+                    new AssertionConsumerService { Binding = ProtocolBindings.HttpPost, Location = new Uri(defaultSite, "Auth/AssertionConsumerService") },
                 },
                 AttributeConsumingServices = new AttributeConsumingService[]
                 {
-                    new AttributeConsumingService { ServiceNames = new LocalizedNameType[] { new LocalizedNameType("Some SP", "en") }, RequestedAttributes = CreateRequestedAttributes() }
+                    new AttributeConsumingService { ServiceNames = new LocalizedNameType[] { new LocalizedNameType("Woodgrove", "en") }, RequestedAttributes = CreateRequestedAttributes() }
                 },
             };
-            entityDescriptor.ContactPersons = new[] { 
+            entityDescriptor.ContactPersons = new[] {
                 new ContactPerson(ContactTypes.Administrative)
                 {
                     Company = "Some Company",

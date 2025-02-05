@@ -4,9 +4,12 @@ using ITfoxtec.Identity.Saml2.MvcCore;
 using ITfoxtec.Identity.Saml2.MvcCore.Configuration;
 using ITfoxtec.Identity.Saml2.Schemas.Metadata;
 using ITfoxtec.Identity.Saml2.Util;
+using Microsoft.ApplicationInsights;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// The following line enables Application Insights telemetry collection.
+builder.Services.AddApplicationInsightsTelemetry();
 
 builder.Services.AddAuthorization(options =>
 {
